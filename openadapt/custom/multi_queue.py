@@ -1,7 +1,8 @@
+# retrieved from https://gist.github.com/FanchenBao/d8577599c46eab1238a81857bb7277c9
 from multiprocessing.queues import Queue
 import multiprocessing
 
-# The following implementation of custom MyQueue to avoid NotImplementedError
+# The following implementation of custom MyQueue (multi_queue) to avoid NotImplementedError
 # when calling queue.qsize() in MacOS X comes almost entirely from this github
 # discussion: https://github.com/keras-team/autokeras/issues/368
 # Necessary modification is made to make the code compatible with Python3.
@@ -34,7 +35,7 @@ class SharedCounter(object):
         return self.count.value
 
 
-class MyQueue(Queue):
+class MultiQueue(Queue):
     """ A portable implementation of multiprocessing.Queue.
     Because of multithreading / multiprocessing semantics, Queue.qsize() may
     raise the NotImplementedError exception on Unix platforms like Mac OS X
